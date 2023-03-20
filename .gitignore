@@ -1,0 +1,4 @@
+.ipynb_checkpoints/
+bike_postgres_data/
+*.csv
+*.csv.zip
