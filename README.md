@@ -27,6 +27,34 @@ docker run -it \
 
 
 
+METABASE + POSTGRES + PGADMIN + DATA INGESTED
+
+POSTGRES + PGADMIN
+
+cd Workspace/de_zoomcamp_capstone/
+docker compose up -d
+
+docker compose down
+
+DATA INGESTED
+
+URL="https://s3.amazonaws.com/tripdata/202302-citibike-tripdata.csv.zip";
+docker run -it \
+	--network=de_zoomcamp_capstone_default \
+	bike_ingest:v001 \
+	--user=root \
+	--password=root \
+	--host=pgdatabase_capstone \
+	--port=5432 \
+	--db=bike_sharing \
+	--table_name=bike_sharing_trips \
+	--url=${URL}
+	
+METABASE
+
+docker run -d -p 3000:3000 --name metabase metabase/metabase
+
+
 Tools used for 
 
 * making the gif - [Chrome Capture - screenshot & gif tool](https://chrome.google.com/webstore/detail/chrome-capture-screenshot/ggaabchcecdbomdcnbahdfddfikjmphe?hl=en-GB)
