@@ -24,3 +24,17 @@ docker run -it \
 	--db=bike_sharing \
 	--table_name=bike_sharing_trips \
 	--url=${URL}
+
+
+# git related common codes executed throughout
+
+git status
+
+git add .
+git status
+
+git commit -m "docker-compose: for posgres and pg admin;dockerfile: for ingesting the data; ingest_bike_data: .py file for ingesting data"
+
+git branch -a
+git pull origin main
+git push origin main

@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: bike_tranform # just a name doesn't meant ot be same as the database
+    description: "dbt model for staging models"
+    database: bike_sharing # source database
+    schema: public # schema which contains the raw database
+
+    tables:
+      -name: bike_sharing_trips
