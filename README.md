@@ -26,6 +26,28 @@ docker run -it \
 	--url=${URL}
 
 
+
+Tools used for 
+
+* making the gif - [Chrome Capture - screenshot & gif tool](https://chrome.google.com/webstore/detail/chrome-capture-screenshot/ggaabchcecdbomdcnbahdfddfikjmphe?hl=en-GB)
+
+
+The Dashboard
+
+![image](https://user-images.githubusercontent.com/47595700/226678517-27d2d532-0d9e-447a-b937-0f5b304ee34b.png)
+
+Trips count gif
+---
+![Trips Count - chrome-capture-2023-2-21](https://user-images.githubusercontent.com/47595700/226678663-80249e48-a0ef-4d1c-a2eb-4a9693a8ea9d.gif)
+
+Avg Trip Duration by ride type
+---
+![Avg Trip dur by Ride Types chrome-capture-2023-2-21](https://user-images.githubusercontent.com/47595700/226678934-81f1a8b9-99f2-4d78-9bea-3ea74dbc056c.gif)
+
+Avg Trip Duration by Customer Type
+---
+![Avg Trip dur by  Customer Type chrome-capture-2023-2-21](https://user-images.githubusercontent.com/47595700/226679066-74f0434e-e7d3-4069-bd21-a0ca782ea0d2.gif)
+
 # git related common codes executed throughout
 
 git status
