@@ -55,6 +55,24 @@ METABASE
 docker run -d -p 3000:3000 --name metabase metabase/metabase
 
 
+Reproducibility
+clone the repo into another folder
+- create the a new envi
+	- with python 3.9.16
+	- add the requirements.txt for the file
+		- check with prefect version
+			- add the prefect related libs
+		- check with dbt --version	
+			- add the dbt related libs
+- docker desktop setup
+- then the 
+	- for postgres+pgadmin --> docker compose up
+	- for ingesting the data --> docker build <image> and then docker run -it with commands
+	- for metabase
+		- docker pull metabase/metabase:latest
+		- docker run -d -p 3000:3000 --name metabase metabase/metabase
+		- setting up the potgres to create the dashboard
+
 Tools used for 
 
 * making the gif - [Chrome Capture - screenshot & gif tool](https://chrome.google.com/webstore/detail/chrome-capture-screenshot/ggaabchcecdbomdcnbahdfddfikjmphe?hl=en-GB)
