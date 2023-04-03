@@ -1,5 +1,42 @@
 # de_zoomcamp_2023_capstone
-the repo for the DE zoomcamp 2023 which was submitted for evaluation
+For the Final Capstone projectwe are going to use the Citi Bike Sharing data toget some insights and explain them using the vizualization . All the tools explained in the course has been used to help with the process.
+
+## An Intro about the Dataset:
+---
+Citi Bike is the nation's largest bike share program, with 27,000 bikes and over 1,700 stations across Manhattan, Brooklyn, Queens, the Bronx, Jersey City and Hoboken. This dataset is about the Bike Sharing service Citi Bank in NY. 
+
+The official site is [here](https://citibikenyc.com/how-it-works)
+
+The Dataset site is [here](https://s3.amazonaws.com/tripdata/index.html)
+
+Some important info about the dataset from the site:
+* This data has been processed to remove 
+	1. trips that are taken by staff as they service and inspect the system.
+	1. trips that are taken to/from any of our “test” stations (which we were using more in June and July 2013). 
+	1. any trips that were below 60 seconds in length (potentially false starts or users trying to re-dock a bike to ensure it's secure).
+
+## Data Dictionary:
+---
+- Ride ID = unique id for all the rides
+- Rideable type = Types of bikes available for the riders like classic bikes,  docked bikes and electric bike
+- Started at and Ended at = time at which the rides are starting
+- Start station name = Name of the starting station
+- Start station ID = ID of the starting  station
+- End station name = Name of the ending station
+- End station ID = ID of the ending station
+- Start latitude  & Start longitude = lat and long of the starting point
+- End latitude & End Longitude = lat and long of the ending point
+- Member or casual ride = representing whether a rider is a member ( who has a subscription ) or not a member ( casual rider who doesn’t have the a subscription )
+
+## Description of files and folders:
+
+- `ingest_bike_data.py` - contains the all the code used to transform the data and save in the required format
+- `docker-compose.yml`- helps to build the docker image which would be used to create the container with required environment binding them into a common network.
+- `Dockerfile` - used to copy the ingest file to the docker conatiner created int he above step with the required packages and running the python
+- `[README.md](http://README.md)` - (the file you are reading) gives a brief intro about the project and conatins the instructions on how to reproduce the project.
+- `dbt` = this is files related to dbt which helps in Analytics Engineering. This is currently not implemented. Facing issues with setting up the source and querying.
+
+
 
 
 Sequence of commands executed:
