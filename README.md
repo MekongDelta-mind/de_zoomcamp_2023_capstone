@@ -56,7 +56,8 @@ As weare not using GCP for the project, we are considering the Progres Database 
 
 ## Transformations (dbt, spark, etc)
 
-This involves analytics engineering to transform the data after the data has been ingested into the DWH. dbt will be used to the same. For the time being, there are no transformation done. [//]: # (FACING SOME CHALLENGES WITH CONFIGURING THE DBT ON LOCAL MACHINE.)
+<!-- This involves analytics engineering to transform the data after the data has been ingested into the DWH. dbt will be used to the same. For the time being, there are no transformation done. 
+[//]: # ( FACING SOME CHALLENGES WITH CONFIGURING THE DBT ON LOCAL MACHINE.) -->
 
 ## Dashboard
 We are using the Metabase as our Data Vizualization tool. The Postgres is used as the source of data for Metabase. As the whole project is done on local machine, so the Screenshots and gifs of the dashboard has been provided below.
@@ -75,20 +76,43 @@ Your dashboard should contain at least two tiles, we suggest you include:
 
 ## Reproducibility
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+1. Create a new folder for cloning the repo into your folder
+2. Clone the  project by using the command `git clone <url-to-the-repo> .` . If the  repos contents are copied into you new folder, then this step is successful.
+3. You can skip this step if you running the project for the first time OR Just for sanity check try to run the command `sudo rm -rf bike_postgres_data` to remove the volume data from your local machine if you have ran the project before. 
+4. Check if you already have Dokcer installed in your system by running the command `docker --version`. if not use the link [Docker desktop setup](https://docs.docker.com/desktop/) to install Docker Desktop according to your OS.
+5. After checking if the Docker file is present , run the command `docker build -t bike_ingest:v001 .` . This step will create the image from the Dockerfile. You can check  in teh Docker dsktop if an image with name “bike_ingest” is created or not .
+6. Nest is to run the (Postgres + Pgadmin ) for accessing  the database for quick queries on the database byusing the command `docker compose up -d` .
+7. Access the [pgadmin url](http://localhost:8080) , to check if the pgadmin is working properly or not. Login with the creds [ usernam- `admin@admin.com` and password - `root` ].
+    1. once you are logged in into postgres through pgadmin, try to create server 
+        1. with name of the server of your choice 
+        2. hostname = `name of the postgres db you created while running the docker compose up -d` 
+        3. username = `root`
+        4. password = `root`
+        5. Save the config. if the config info are correct then you would have a server with the server of our choice without any error.
+8. NOTE: By this stage The postgres should be activated which could be accessed by pgadmin GUI with all the required config before running the below docker command to ingest the data .
+9. Run the below command to ingest the data from the given url, run the image with the reuired network name to ingest the data into the database named as `bike_sharing` . 
+    
+    ```bash
+    URL="[https://s3.amazonaws.com/tripdata/202302-citibike-tripdata.csv.zip](https://s3.amazonaws.com/tripdata/202302-citibike-tripdata.csv.zip)";
+    docker run -it \
+    --network=de_zoomcamp_capstone_default \
+    bike_ingest:v001 \
+    --user=root \
+    --password=root \
+    --host=pgdatabase_capstone \
+    --port=5432 \
+    --db=bike_sharing \
+    --table_name=bike_sharing_trips \
+    --url=${URL}
+    ```
+    
+10. How the Data Vizualizations was created :
+    1. installing METABASE
+        1. Pull the Metabase image from the DOckerHub by using the command `docker pull metabase/metabase:latest` .
+        2. Run the metabase docker with teh command `docker run -d -p 3000:3000 --name metabase metabase/metabase`
+        3. Access the url `localhost:3000/` to access the Metabase server running on your local instance.
+        4. Check the below gif and screenshots for the dashboard created .
+11. To stop the command Postgres + PGadmin running use the command `docker compose down` .
 
 
 <!---
@@ -168,7 +192,11 @@ clone the repo into another folder
 
 Tools used for 
 
-* making the gif - [Chrome Capture - screenshot & gif tool](https://chrome.google.com/webstore/detail/chrome-capture-screenshot/ggaabchcecdbomdcnbahdfddfikjmphe?hl=en-GB)
+* Scripting the Data Ingest file - `Python`
+* For Containerization - `Docker`
+* For Datawarehouse - `Postgres`
+* For Data Vizualization - `Metabase`
+* Making the gif - [Chrome Capture - screenshot & gif tool](https://chrome.google.com/webstore/detail/chrome-capture-screenshot/ggaabchcecdbomdcnbahdfddfikjmphe?hl=en-GB)
 
 
 ## The Dashboard
