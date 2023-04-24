@@ -1,3 +1,20 @@
+- [de_zoomcamp_2023_capstone](#de-zoomcamp-2023-capstone)
+  * [Problem Description](#problem-description)
+    + [An Intro about the Dataset:](#an-intro-about-the-dataset-)
+    + [Data Dictionary:](#data-dictionary-)
+    + [Description of files and folders:](#description-of-files-and-folders-)
+  * [Cloud](#cloud)
+  * [Data ingestion (choose either batch or stream)](#data-ingestion--choose-either-batch-or-stream-)
+  * [Data warehouse](#data-warehouse)
+  * [Transformations (dbt, spark, etc)](#transformations--dbt--spark--etc-)
+  * [Dashboard](#dashboard)
+  * [Reproducibility](#reproducibility)
+  * [The Dashboard](#the-dashboard)
+    + [Trips count gif](#trips-count-gif)
+    + [Avg Trip Duration by ride type](#avg-trip-duration-by-ride-type)
+    + [Avg Trip Duration by Customer Type](#avg-trip-duration-by-customer-type)
+- [git related common codes executed throughout the project lifecycle](#git-related-common-codes-executed-throughout-the-project-lifecycle)
+
 # de_zoomcamp_2023_capstone
 For the Final Capstone projectwe are going to use the Citi Bike Sharing data toget some insights and explain them using the vizualization . All the tools explained in the course has been used to help with the process.
 
