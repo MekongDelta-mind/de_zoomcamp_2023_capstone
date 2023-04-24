@@ -16,7 +16,7 @@
 - [git related common codes executed throughout the project lifecycle](#git-related-common-codes-executed-throughout-the-project-lifecycle)
 
 # de_zoomcamp_2023_capstone
-For the Final Capstone projectwe are going to use the Citi Bike Sharing data toget some insights and explain them using the vizualization . All the tools explained in the course has been used to help with the process.
+For the Final Capstone project we are going to use the Citi Bike Sharing data toget some insights and explain them using the vizualization . All the tools explained in the course has been used to help with the process.
 
 ## Problem Description
 ### An Intro about the Dataset:
@@ -32,31 +32,35 @@ Some important info about the dataset from the site:
 	1. trips that are taken by staff as they service and inspect the system.
 	1. trips that are taken to/from any of our “test” stations (which we were using more in June and July 2013). 
 	1. any trips that were below 60 seconds in length (potentially false starts or users trying to re-dock a bike to ensure it's secure).
+The Question we are trying to answer are :
+1. What are the total number of trips taken by both types(memeber and casual) of customers.
+1. What is the avg trip duration for each types of bike ?
+1. What is the avg trip duration for each types of members ?
 
 ### Data Dictionary:
 ---
-- Ride ID = unique id for all the rides
-- Rideable type = Types of bikes available for the riders like classic bikes,  docked bikes and electric bike
-- Started at and Ended at = time at which the rides are starting
-- Start station name = Name of the starting station
-- Start station ID = ID of the starting  station
-- End station name = Name of the ending station
-- End station ID = ID of the ending station
-- Start latitude  & Start longitude = lat and long of the starting point
-- End latitude & End Longitude = lat and long of the ending point
-- Member or casual ride = representing whether a rider is a member ( who has a subscription ) or not a member ( casual rider who doesn’t have the a subscription )
+- `Ride ID` = unique id for all the rides
+- `Rideable type` = Types of bikes available for the riders like classic bikes,  docked bikes and electric bike
+- `Started at` and `Ended at` = time at which the rides are starting
+- `Start station name` = Name of the starting station
+- `Start station ID` = ID of the starting  station
+- `End station name` = Name of the ending station
+- `End station ID` = ID of the ending station
+- `Start latitude`  & `Start longitude` = lat and long of the starting point
+- `End latitude` & `End Longitude` = lat and long of the ending point
+- `Member` or `casual ride` = representing whether a rider is a member ( who has a subscription ) or not a member ( casual rider who doesn’t have the a subscription )
 
 ### Description of files and folders:
 
 - `ingest_bike_data.py` - contains the all the code used to transform the data and save in the required format
-- `docker-compose.yml`- helps to build the docker image which would be used to create the container with required environment binding them into a common network.
+- `docker-compose.yml`- helps to build the docker image which would be used to create the container with Postgres and Pgadmin image together, binding them into a common network.
 - `Dockerfile` - used to copy the ingest file to the docker conatiner created int he above step with the required packages and running the python
-- `[README.md](http://README.md)` - (the file you are reading) gives a brief intro about the project and conatins the instructions on how to reproduce the project.
+- `README.md` - (the file you are reading) gives a brief intro about the project and conatins the instructions on how to reproduce the project.
 - `dbt` = this is files related to dbt which helps in Analytics Engineering. This is currently not implemented. Facing issues with setting up the source and querying.
 
 ## Cloud
 
-The project has been developed without using any cloud technologies. 
+The project has been developed without using any cloud technologies. The whole project is done loaclly and the stpes to recreate the project is mentioned in the [Reproducibility](#reproducibility) section.
 
 [//]: # (For EVERY week in the course write what are the technologies used instead of using the GCP,AWS or AZURE.This will be very easy for people who want to do the hand-ons without the GCP registeration)
 
@@ -69,15 +73,15 @@ For the time being once the postgres and pgadmin is setup , we need to run the d
 
 ## Data warehouse
 
-As weare not using GCP for the project, we are considering the Progres Database as our Warehouse, which contains the data which will be used to gain insights
+As we are not using GCP for the project, we are considering the Progres Database as our Warehouse, which contains the data which will be used to gain insights using the Metabase tool.
 
-## Transformations (dbt, spark, etc)
+<!--## Transformations (dbt, spark, etc)-->
 
 <!-- This involves analytics engineering to transform the data after the data has been ingested into the DWH. dbt will be used to the same. For the time being, there are no transformation done. 
 [//]: # ( FACING SOME CHALLENGES WITH CONFIGURING THE DBT ON LOCAL MACHINE.) -->
 
 ## Dashboard
-We are using the Metabase as our Data Vizualization tool. The Postgres is used as the source of data for Metabase. As the whole project is done on local machine, so the Screenshots and gifs of the dashboard has been provided below.
+We are using the Metabase as our Data Vizualization tool. The Postgres is used as the source of data for Metabase. As the whole project is done on local machine, so the Screenshots and gifs of the dashboard has been provided below in the [The Dashboard](#the-dashboard) section.
 
 
 <!-- You can build a dashboard with any of the tools shown in the course [Data Studio or Metabase] or any other BI tool of your choice. 
