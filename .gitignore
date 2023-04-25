@@ -2,3 +2,4 @@
 bike_postgres_data/
 *.csv
 *.csv.zip
+__pycache__/

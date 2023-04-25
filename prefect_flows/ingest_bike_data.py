@@ -6,8 +6,17 @@ from time import time
 import pandas as pd
 from sqlalchemy import create_engine
 import zipfile
-# from prefect import flow, task
+from prefect import flow, task, tasks
+from datetime import timedelta
 
+
+@task(
+          name="Extract the data",
+          log_prints=True, 
+          retries = 3, 
+          cache_key_fn=tasks.task_input_hash, # caching hte data to not download every single time
+          cache_expiration=timedelta(days=1)
+          )
 def extract_data(url: str):
     # the backup files are gzipped, and it's important to keep the correct extension
     # for pandas to be able to open the file    
@@ -31,6 +40,10 @@ def extract_data(url: str):
 
     return df
 
+@task(    
+          name="Transform data",
+          log_prints=True, 
+         )
 def transform_data(df):
     print(f"null values count for columns before dropping: \n {df.isna().sum()}")
     df.dropna(axis=0, inplace=True)
@@ -42,7 +55,10 @@ def transform_data(df):
 
     return df
 
-
+@task(    
+          name="Loading the data",
+          log_prints=True, 
+         )
 def load_data(user, password, host, port, db, table_name, data_df):
 
         engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
@@ -51,26 +67,38 @@ def load_data(user, password, host, port, db, table_name, data_df):
         data_df.head(n=0).to_sql(name=table_name, con=engine, if_exists='replace') # this it adding the columns to db
         data_df.to_sql(name=table_name, con=engine, if_exists='append')
 
+@flow(
+          name="Subflow for Logging", 
+         )
 def log_subflow(db: str, table_name: str):
     print(f"Logging Subflow for db: {db} and table:{table_name}")
 
 
-def main_flow(args):
-    # user = "root" # the username  is changed from original file
-    # password = "root" # the password is changed from original file
-    # host = "localhost"
-    # port = "5432"
-    # db = "bike_sharing" # db name
-    # table_name = "bike_sharing_trips" # table name
-    # csv_url = "https://s3.amazonaws.com/tripdata/202302-citibike-tripdata.csv.zip"
+@flow(
+          name="Bike Trips Data Ingestion Flow", 
+          description= "The Prefect Flow to ingest the data into the Postgres database"
+          )
+def main_flow():
+		# first run the prefect flow without sending the cred as paramters  
+		# then you can send a parameterized flow
+    user = "root" # the username  is changed from original file
+    password = "root" # the password is changed from original file
+    host = "localhost"
+    port = "5432"
+    db = "bike_sharing" # db name
+    table_name = "bike_sharing_trips" # table name
+    csv_url = "https://s3.amazonaws.com/tripdata/202302-citibike-tripdata.csv.zip"
 
-    user = args.user
-    password = args.password
-    host = args.host 
-    port = args.port 
-    db = args.db
-    table_name = args.table_name
-    csv_url = args.url
+    # user = args.user
+    # password = args.password
+    # host = args.host 
+    # port = args.port 
+    # db = args.db
+    # table_name = args.table_name
+    # csv_url = args.url
+		
+		# flows conatins tasks which allows to have dependencies before and after 
+		# the task is completed so that a task waits till the pther task completes
 
     log_subflow(db, table_name)
     raw_data = extract_data(csv_url)
@@ -82,15 +110,4 @@ def main_flow(args):
 
 if __name__ == '__main__':
     # while adding the prefect code this is to be removed as we will be using the prefect connector directly
-    parser = argparse.ArgumentParser(description='Ingest CSV data to Postgres')
-
-    parser.add_argument('--user', required=True, help='user name for postgres')
-    parser.add_argument('--password', required=True, help='password for postgres')
-    parser.add_argument('--host', required=True, help='host for postgres')
-    parser.add_argument('--port', required=True, help='port for postgres')
-    parser.add_argument('--db', required=True, help='database name for postgres')
-    parser.add_argument('--table_name', required=True, help='name of the table where we will write the results to')
-    parser.add_argument('--url', required=True, help='url of the csv file')
-
-    args = parser.parse_args()
-    main_flow(args)
+    main_flow()

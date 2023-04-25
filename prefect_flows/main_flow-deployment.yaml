@@ -1,0 +1,37 @@
+###
+### A complete description of a Prefect Deployment for flow 'Bike Trips Data Ingestion Flow'
+###
+name: Capstone Project Flow
+description: The Prefect Flow to ingest the data into the Postgres database
+version: 0f748a829a156cc19147dc6c729fc9fa
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+tags: []
+parameters: {}
+schedule: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: Bike Trips Data Ingestion Flow
+manifest_path: null
+storage: null
+path: /home/prabin_nayak/Workspace/de_zoomcamp_capstone/prefect_flows
+entrypoint: ingest_bike_data.py:main_flow
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties: {}
+  required: null
+  definitions: null
