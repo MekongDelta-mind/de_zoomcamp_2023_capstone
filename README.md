@@ -296,4 +296,4 @@ git push origin main
 
 # Last but not the Least...
 
-Thanks to Datatalks club for creating this [Data Engineering course](https://github.com/DataTalksClub/data-engineering-zoomcamp) to help anyone and everyone to learn Data Engineering at ZERO COST. There other offerings by the Club and those are [ML Zoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp) and [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp). Do check them out !! 
+Thanks to Datatalks club for creating this [Data Engineering course](https://github.com/DataTalksClub/data-engineering-zoomcamp) to help anyone and everyone to learn Data Engineering at ZERO COST. Other offerings by the Club are [ML Zoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp) and [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp). Do check them out !! 
