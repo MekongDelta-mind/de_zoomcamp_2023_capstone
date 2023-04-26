@@ -291,7 +291,9 @@ git push origin main
 
 1. Currently the transformations are being done in the python script itself. Adding the dbt transformation to create FACTS and DIMENSIONS table dynamically.
 1. Adding the docker capabilities into the Prefect flow so that we can conatinerize the whole flow which can be setup in any host machine with a single command.
+1. Adding the distributed processing using Spark.
+1. Adding Stream processing based on feasibility and scope of the project.
 
 # Last but not the Least...
 
-Thanks to Datatalks club for creating this Data Engineering course to help anyone and everyone to learn Data Engineering at ZERO COST. There other offerings by the Club and those are ML Zoomcamp and MLOps Zoomcamp 
+Thanks to Datatalks club for creating this [Data Engineering course](https://github.com/DataTalksClub/data-engineering-zoomcamp) to help anyone and everyone to learn Data Engineering at ZERO COST. There other offerings by the Club and those are [ML Zoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp) and [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp). Do check them out !! 
