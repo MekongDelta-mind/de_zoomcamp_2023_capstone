@@ -1,3 +1,14 @@
+
+DISCLAILMER: I have submitted the project in the First attempt itself. Because someone had given a wrong commit id for a project that I had to review, I didn't review one of the project that was assigned to me. That is the reason I have made some improvements( added prefect and modified the readme) and submitted again. Please do take time and review my project and do give any suggestions to improve my understnading.
+Also note, as I have added this readme after filling the form for the Project attempt-2, so the commit ID in the excel you saw would be diffrenet from the current commit id.
+
+Excel sheet commit ID: `f812320`
+
+Current Commid ID: `whatever commit ID you can see`
+
+
+---
+
 - [de_zoomcamp_2023_capstone](#de-zoomcamp-2023-capstone)
   * [Problem Description](#problem-description)
     + [An Intro about the Dataset:](#an-intro-about-the-dataset)
